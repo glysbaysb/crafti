@@ -13,9 +13,9 @@ abstract class Expr {
 	abstract fun <R> accept(visitor: Visitor<R>): R
 
 	class Binary(
-		left : Expr,
-		operator : Token,
-		right : Expr,
+		val left : Expr,
+		val operator : Token,
+		val right : Expr,
 	) : Expr(){
 
 		override fun <R> accept(visitor: Visitor<R>): R {
@@ -24,7 +24,7 @@ abstract class Expr {
 		}
 
 	class Grouping(
-		expression : Expr,
+		val expression : Expr,
 	) : Expr(){
 
 		override fun <R> accept(visitor: Visitor<R>): R {
@@ -33,7 +33,7 @@ abstract class Expr {
 		}
 
 	class Literal(
-		value : Object,
+		val value : Object,
 	) : Expr(){
 
 		override fun <R> accept(visitor: Visitor<R>): R {
@@ -42,8 +42,8 @@ abstract class Expr {
 		}
 
 	class Unary(
-		operator : Token,
-		right : Expr,
+		val operator : Token,
+		val right : Expr,
 	) : Expr(){
 
 		override fun <R> accept(visitor: Visitor<R>): R {

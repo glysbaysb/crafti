@@ -5,7 +5,7 @@ def defineType(file, baseName, className, fields):
 
     for field in fields.split(", "):
         t, name = field.split(' ')
-        file.write("\t\t" + name + " : " + t + ",\r\n")
+        file.write("\t\tval " + name + " : " + t + ",\r\n")
 
     file.write("\t) : " + baseName + "(){\r\n")
 
