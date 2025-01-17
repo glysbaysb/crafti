@@ -12,4 +12,12 @@ class Lox() {
 	
 		return tokens.size
 	}
+
+	fun error(token: Token, message: String) {
+		if(token.type == TokenType.EOF) {
+			println(token.line.toString() + " at end" + message)
+		} else {
+			println(token.line.toString() + " at '" + token.lexeme + "'" + message)
+		}
+	}
 }
