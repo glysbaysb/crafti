@@ -13,11 +13,11 @@ class SampleTest {
 
     @Test
     fun testWhitespaceSum() {
-        assertEquals(42.0, testLox.interpret("  40	+\n 2	"))
+        assertEquals(42.0, testLox.interpret("  40\t+\n 2\t"))
     }
 
     @Test
     fun testComment() {
         assertEquals(20.0, testLox.interpret("// abc\n1+19"))
-	}
+    }
 }

@@ -8,7 +8,8 @@ class Lox() {
 
 			   val parser = Parser(tokens)
 			   val expr = parser.expression()
-			   val result = parser.evaluate(expr)
+			   val interpreter = Interpreter()
+			   val result = expr.accept(interpreter)
 			   println(result)
 			   return result
 	   }

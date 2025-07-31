@@ -2,36 +2,6 @@ import TokenType.*
 import Token
 
 class Parser(val tokens: List<Token>) {
-	fun evaluate(expr: Expr): Any? {
-		return when (expr) {
-			is Expr.Literal -> expr.value
-			is Expr.Grouping -> evaluate(expr.expression)
-			is Expr.Unary -> {
-				val right = evaluate(expr.right)
-				when (expr.operator.type) {
-					TokenType.MINUS -> -(right as Double)
-					TokenType.BANG -> !(right as Boolean)
-					else -> null
-				}
-			}
-			is Expr.Binary -> {
-				val left = evaluate(expr.left) as Double
-				val right = evaluate(expr.right) as Double
-				when (expr.operator.type) {
-					TokenType.PLUS -> left + right
-					TokenType.MINUS -> left - right
-					TokenType.STAR -> left * right
-					TokenType.SLASH -> left / right
-					TokenType.GREATER -> left > right
-					TokenType.LESSER -> left < right
-					TokenType.EQUAL_EQUAL -> left == right
-					TokenType.BANG_EQUAL -> left != right
-					else -> null
-				}
-			}
-			else -> null
-		}
-	}
 	class ParseError() : RuntimeException() {}
 	var current : Int = 0;
 
